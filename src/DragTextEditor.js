@@ -452,7 +452,7 @@ childMR=()=>{
    <View style={{borderColor:isBorder?"transparent":"white",borderWidth:1}} onLayout={this.calcLayout}>
          {this.state.giveInput?
           <TextInput
-            style={{
+            style={{this.props.style}, {
               zIndex:10000,
               elevation:0.01,
               fontFamily: this.props.FontFamily,
@@ -476,7 +476,7 @@ childMR=()=>{
           />
           : 
            <Text
-            style={{
+            style={{this.props.style}, {
               fontFamily: this.props.FontFamily,
               color: this.props.FontColor,
               fontSize: this.props.FontSize,
