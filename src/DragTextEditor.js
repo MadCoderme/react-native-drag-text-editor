@@ -452,7 +452,7 @@ childMR=()=>{
    <View style={{borderColor:isBorder?"transparent":"white",borderWidth:1}} onLayout={this.calcLayout}>
          {this.state.giveInput?
           <TextInput
-            style={{this.props.style}, {
+            style={[this.props.style, {
               zIndex:10000,
               elevation:0.01,
               fontFamily: this.props.FontFamily,
@@ -467,7 +467,7 @@ childMR=()=>{
               overflow: 'hidden',
               margin: 10,
               padding:5,
-            }}
+            }]}
           selectTextOnFocus={true}
           multiline={true}
           autoFocus={true}
@@ -476,7 +476,7 @@ childMR=()=>{
           />
           : 
            <Text
-            style={{this.props.style}, {
+            style={[this.props.style}, {
               fontFamily: this.props.FontFamily,
               color: this.props.FontColor,
               fontSize: this.props.FontSize,
@@ -490,7 +490,7 @@ childMR=()=>{
               display: 'flex',
               margin: 10,
               padding:5,
-            }}
+            }]}
             > 
               {this.state.text}
             </Text>
