@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import {
   Holder,
   } from './Holder';
+import Svg, {Text as StrokedText} from 'react-native-svg'
 const WINDOW = Dimensions.get('window');
 const LEFT_EDGE = 'LEFT_EDGE';
 const RIGHT_EDGE = 'RIGHT_EDGE';
@@ -418,6 +419,7 @@ childMR=()=>{
       x,
       y,
       w,
+      h,
       isBorder,
     } = this.state;
 
@@ -442,7 +444,30 @@ childMR=()=>{
          }}>
          
         
-   <View style={{borderColor:isBorder?"transparent":"white",borderWidth:1}} onLayout={this.calcLayout}>
+   <View style={{borderColor:isBorder?"transparent":"white",borderWidth:1 }} onLayout={this.props.isStroke ? this.calcLayout : null}>
+      { this.props.isStroke ? <View><Text onLayout={this.calcLayout}
+            style={[this.props.style, {
+              fontFamily: this.props.FontFamily,
+              color: this.props.FontColor,
+              fontSize: this.props.FontSize,
+              letterSpacing: this.props.LetterSpacing,
+              textAlignVertical: 'center',
+              backgroundColor:this.props.BackgroundColor,
+              textAlign: this.props.TextAlign,//'right',
+              lineHeight: this.props.LineHeight,
+              fontWeight: 'normal',
+              overflow: 'hidden',
+              display: 'flex',
+              margin: 10,
+              padding:5,
+              textShadowColor: 'black', textShadowRadius: 1, textShadowOffset: { 
+                width: 2,
+                height: 2
+              }
+            }]}
+            > 
+              {this.props.PlaceHolder}
+            </Text>
          <Text
             style={[this.props.style, {
               fontFamily: this.props.FontFamily,
@@ -458,7 +483,60 @@ childMR=()=>{
               display: 'flex',
               margin: 10,
               padding:5,
+              position: 'absolute',
+              top: 0, left: 0, right: 0, bottom: 0,
+              textShadowOffset: {width: -2, height: -2},
+              textShadowColor: 'black',
+              textShadowRadius: 1
             }]}
+            > 
+              {this.props.PlaceHolder}
+            </Text>
+            <Text
+            style={[this.props.style, {
+              fontFamily: this.props.FontFamily,
+              color: this.props.FontColor,
+              fontSize: this.props.FontSize,
+              letterSpacing: this.props.LetterSpacing,
+              textAlignVertical: 'center',
+              backgroundColor:this.props.BackgroundColor,
+              textAlign: this.props.TextAlign,//'right',
+              lineHeight: this.props.LineHeight,
+              fontWeight: 'normal',
+              overflow: 'hidden',
+              display: 'flex',
+              margin: 10,
+              padding:5,
+              position: 'absolute',
+              top: 0, left: 0, right: 0, bottom: 0,
+              textShadowOffset: {width: -2, height: 2},
+              textShadowColor: 'black',
+              textShadowRadius: 1
+            }]}
+            > 
+              {this.props.PlaceHolder}
+            </Text></View> : null}
+            <Text
+            style={[this.props.style, {
+              fontFamily: this.props.FontFamily,
+              color: this.props.FontColor,
+              fontSize: this.props.FontSize,
+              letterSpacing: this.props.LetterSpacing,
+              textAlignVertical: 'center',
+              backgroundColor:this.props.BackgroundColor,
+              textAlign: this.props.TextAlign,//'right',
+              lineHeight: this.props.LineHeight,
+              fontWeight: 'normal',
+              overflow: 'hidden',
+              display: 'flex',
+              margin: 10,
+              padding:5,
+              
+            }, this.props.isStroke ? {position: 'absolute',
+            top: 0, left: 0, right: 0, bottom: 0,
+            textShadowOffset: {width: 2, height: -2},
+            textShadowColor: 'black',
+            textShadowRadius: 1} : {}]}
             > 
               {this.props.PlaceHolder}
             </Text>
