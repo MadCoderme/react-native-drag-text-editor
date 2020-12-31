@@ -403,16 +403,9 @@ childMR=()=>{
   isOtherBorder = () => {
     this.setState({isBorder: false});
   };
-  onText = (text) => {
-    const {
-   onTextChanged
-  } = this.props;
-    this.setState({ text }, () => {
-      if (onTextChanged) {
-        onTextChanged(text);
-      }
-    });
-  };
+  onText=(text)=>{
+    this.setState({text});
+  }
   validPress=()=>{
     this.isOtherBorder(); 
       if(this.props.centerPress!=undefined){
@@ -450,33 +443,8 @@ childMR=()=>{
          
         
    <View style={{borderColor:isBorder?"transparent":"white",borderWidth:1}} onLayout={this.calcLayout}>
-         {this.state.giveInput?
-          <TextInput
+         <Text
             style={[this.props.style, {
-              zIndex:10000,
-              elevation:0.01,
-              fontFamily: this.props.FontFamily,
-              color:this.props.FontColor,
-              fontSize: this.props.FontSize,
-              letterSpacing: this.props.LetterSpacing,
-              textAlignVertical: 'center',
-              backgroundColor:this.props.BackgroundColor,
-              textAlign: this.props.TextAlign,//'right',
-              lineHeight: this.props.LineHeight,
-              fontWeight: 'normal',
-              overflow: 'hidden',
-              margin: 10,
-              padding:5,
-            }]}
-          selectTextOnFocus={true}
-          multiline={true}
-          autoFocus={true}
-          onChangeText={(text) => this.onText(text)}
-          value={this.state.text}
-          />
-          : 
-           <Text
-            style={[this.props.style}, {
               fontFamily: this.props.FontFamily,
               color: this.props.FontColor,
               fontSize: this.props.FontSize,
@@ -492,9 +460,9 @@ childMR=()=>{
               padding:5,
             }]}
             > 
-              {this.state.text}
+              {this.props.PlaceHolder}
             </Text>
-        }
+        
         </View>
 
 
